@@ -526,17 +526,29 @@
 </section>
 </main>
   <script>
-  // Collane cliccabili: imposta il filtro "Collana" e aggiorna la lista
-  document.querySelectorAll('.collana-link').forEach(link => {
-    link.addEventListener('click', () => {
-      const value = link.getAttribute('data-collana');
+  document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a.collana-link');
+      if (!link) return;
+
+      e.preventDefault();
+
+      location.hash = 'libri';
+
+      const value = link.getAttribute('data-collana') || '';
       const select = document.getElementById('collana');
-      if (!select) return;
+      if (select) {
+        select.value = value;
 
-      select.value = value;
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+        select.dispatchEvent(new Event('input', { bubbles: true }));
+      }
 
-      // Trigger del cambio per riusare la logica già esistente
-      select.dispatchEvent(new Event('change'));
+      const q = document.getElementById('q');
+      if (q) {
+        q.value = '';
+        q.dispatchEvent(new Event('input', { bubbles: true }));
+      }
     });
   });
 </script>
