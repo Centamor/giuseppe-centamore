@@ -504,6 +504,21 @@
   </div>
 </section>
 </main>
+  <script>
+  // Collane cliccabili: imposta il filtro "Collana" e aggiorna la lista
+  document.querySelectorAll('.collana-link').forEach(link => {
+    link.addEventListener('click', () => {
+      const value = link.getAttribute('data-collana');
+      const select = document.getElementById('collana');
+      if (!select) return;
+
+      select.value = value;
+
+      // Trigger del cambio per riusare la logica già esistente
+      select.dispatchEvent(new Event('change'));
+    });
+  });
+</script>
 </body>
 </html>
 
