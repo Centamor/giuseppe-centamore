@@ -525,29 +525,31 @@
   </div>
 </section>
 </main>
-  <script>
+<script>
   document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a.collana-link');
       if (!link) return;
 
       e.preventDefault();
-
       location.hash = 'libri';
 
       const value = link.getAttribute('data-collana') || '';
       const select = document.getElementById('collana');
+      const q = document.getElementById('q');
+
       if (select) {
         select.value = value;
-
-        select.dispatchEvent(new Event('change', { bubbles: true }));
-        select.dispatchEvent(new Event('input', { bubbles: true }));
+        ['change','input'].forEach(evt =>
+          select.dispatchEvent(new Event(evt, { bubbles: true }))
+        );
       }
 
-      const q = document.getElementById('q');
       if (q) {
         q.value = '';
-        q.dispatchEvent(new Event('input', { bubbles: true }));
+        ['change','input','keyup'].forEach(evt =>
+          q.dispatchEvent(new Event(evt, { bubbles: true }))
+        );
       }
     });
   });
