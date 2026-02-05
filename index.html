@@ -14,7 +14,28 @@
 <meta property="og:description" content="Manuali per concorsi pubblici, saggi, spiritualità e collane. Parole vere, strumenti che funzionano." />
   <!-- Sostituisci con un'immagine 1200x630 quando ce l'hai -->
   <meta property="og:image" content="og-cover.jpg" />
+/* Griglia libri */
+.books-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap:14px;
+}
 
+/* Bottoni collane */
+.collane-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:12px 0;
+}
+
+.collana-link{
+  display:inline-block;
+  padding:10px 12px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  text-decoration:none;
+}
   <style>
     :root{
       --bg:#0b0f14;
