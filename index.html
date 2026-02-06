@@ -553,8 +553,29 @@
       }
     });
   });
+  });
+  <script>
+function setCollana(value){
+
+  alert("Funzione attiva: " + value); // test
+
+  location.hash = 'libri';
+
+  const select = document.getElementById('collana');
+  if (select) {
+    select.value = value;
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+    select.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+
+  const q = document.getElementById('q');
+  if (q) {
+    q.value = '';
+    q.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+}
 </script>
-  </script>
+
 </body>
 </html>
 </body>
