@@ -574,33 +574,22 @@ function setCollana(value){
   }
 }
 <script>
-  document.addEventListener('click', function(e){
+function setCollana(value){
+  location.hash = 'libri';
 
-    const link = e.target.closest('a.collana-link');
-    if (!link) return;
+  const select = document.getElementById('collana');
+  if (select) {
+    select.value = value;
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+    select.dispatchEvent(new Event('input', { bubbles: true }));
+  }
 
-    e.preventDefault();
-
-    const value = link.getAttribute('data-collana');
-
-    // Vai alla sezione libri
-    location.hash = 'libri';
-
-    // Imposta il menu
-    const select = document.getElementById('collana');
-    if(select){
-      select.value = value;
-      select.dispatchEvent(new Event('change'));
-    }
-
-    // Pulisce la ricerca
-    const q = document.getElementById('q');
-    if(q){
-      q.value = '';
-      q.dispatchEvent(new Event('input'));
-    }
-
-  });
+  const q = document.getElementById('q');
+  if (q) {
+    q.value = '';
+    q.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+}
 </script>
 </body>
 </html>
