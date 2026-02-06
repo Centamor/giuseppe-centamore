@@ -605,6 +605,23 @@ function setCollana(value){
     q.dispatchEvent(new Event('input', { bubbles: true }));
   }
 }
+<script>
+function setCollana(value){
+  location.hash = 'libri';
+
+  const select = document.getElementById('collana');
+  if (select) {
+    select.value = value;
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+    select.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+
+  const q = document.getElementById('q');
+  if (q) {
+    q.value = '';
+    q.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+}
 </script>
 
 </body>
@@ -628,5 +645,6 @@ function setCollana(value){
 
 
 
-</body>
-</html>
+
+
+
