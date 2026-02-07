@@ -525,39 +525,65 @@
 </main>
 <script>
   function applyCollanaFilter(value) {
+    // Vai ai libri
     location.hash = 'libri';
 
     const select = document.getElementById('collana');
     const q = document.getElementById('q');
 
+    // reset ricerca
     if (q) {
       q.value = '';
       q.dispatchEvent(new Event('input', { bubbles: true }));
       q.dispatchEvent(new Event('change', { bubbles: true }));
+      q.dispatchEvent(new KeyboardEvent('keyup', { bubbles: true, key: ' ' }));
     }
 
+    // imposta collana
     if (select) {
       select.value = value || '';
       select.dispatchEvent(new Event('change', { bubbles: true }));
       select.dispatchEvent(new Event('input', { bubbles: true }));
     }
+
+    // se esiste una funzione globale di rendering, prova a richiamarla
+    if (typeof window.renderBooks === 'function') window.renderBooks();
+    if (typeof window.updateBooks === 'function') window.updateBooks();
   }
 
   document.addEventListener('DOMContentLoaded', () => {
 
+    // Click su QUALSIASI collana: card o bottoni
     document.addEventListener('click', (e) => {
-      const link = e.target.closest('a.collana-link[data-collana]');
-      if (!link) return;
+      const el =
+        e.target.closest('a.collana-link[data-collana]') ||
+        e.target.closest('a.collana-card[onclick]');
 
-      e.preventDefault();
-      applyCollanaFilter(link.getAttribute('data-collana'));
+      // caso 1: bottoni in basso (data-collana)
+      if (el && el.matches('a.collana-link[data-collana]')) {
+        e.preventDefault();
+        applyCollanaFilter(el.getAttribute('data-collana'));
+        return;
+      }
+
+      // caso 2: card (setCollana('...') nell'onclick)
+      const card = e.target.closest('a.collana-card');
+      if (card) {
+        const onclick = card.getAttribute('onclick') || '';
+        const m = onclick.match(/setCollana\('([^']+)'\)/);
+        if (m && m[1]) {
+          e.preventDefault();
+          applyCollanaFilter(m[1]);
+          return;
+        }
+      }
     });
 
+    // Compatibilità: se nel tuo HTML c’è onclick="setCollana('...')"
     window.setCollana = function(value) {
       applyCollanaFilter(value);
       return false;
     };
-
   });
 </script>
 </body>
