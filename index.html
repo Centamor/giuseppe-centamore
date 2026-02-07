@@ -524,58 +524,57 @@
 </section>
 </main>
 <script>
+  function filterBooksDOM() {
+    const collana = (document.getElementById('collana')?.value || '').trim();
+    const q = (document.getElementById('q')?.value || '').trim().toLowerCase();
+
+    document.querySelectorAll('.book-card').forEach(card => {
+      const c = (card.dataset.collana || '').trim();
+      const text = (card.innerText || '').toLowerCase();
+
+      const okCollana = !collana || c === collana;
+      const okQuery = !q || text.includes(q);
+
+      card.style.display = (okCollana && okQuery) ? '' : 'none';
+    });
+  }
+
   function applyCollanaFilter(value) {
     location.hash = 'libri';
 
     const select = document.getElementById('collana');
     const q = document.getElementById('q');
 
+    // reset ricerca
     if (q) {
       q.value = '';
       q.dispatchEvent(new Event('input', { bubbles: true }));
       q.dispatchEvent(new Event('change', { bubbles: true }));
     }
 
+    // imposta collana
     if (select) {
       select.value = value || '';
       select.dispatchEvent(new Event('change', { bubbles: true }));
       select.dispatchEvent(new Event('input', { bubbles: true }));
     }
 
-    if (typeof window.renderBooks === 'function') window.renderBooks();
-    if (typeof window.updateBooks === 'function') window.updateBooks();
+    // ✅ aggiorna visualizzazione libri
+    filterBooksDOM();
   }
 
-  // ✅ QUESTA DEVE ESSERE GLOBALE SUBITO (NON dentro DOMContentLoaded)
+  // ✅ globale subito
   window.setCollana = function(value) {
     applyCollanaFilter(value);
     return false;
   };
 
   document.addEventListener('DOMContentLoaded', () => {
-    // Facoltativo: puoi anche eliminarlo, perché l'onclick già basta.
-    document.addEventListener('click', (e) => {
-      const el =
-        e.target.closest('a.collana-link[data-collana]') ||
-        e.target.closest('a.collana-card[onclick]');
+    document.getElementById('collana')?.addEventListener('change', filterBooksDOM);
+    document.getElementById('q')?.addEventListener('input', filterBooksDOM);
 
-      if (el && el.matches('a.collana-link[data-collana]')) {
-        e.preventDefault();
-        applyCollanaFilter(el.getAttribute('data-collana'));
-        return;
-      }
-
-      const card = e.target.closest('a.collana-card');
-      if (card) {
-        const onclick = card.getAttribute('onclick') || '';
-        const m = onclick.match(/setCollana\('([^']+)'\)/);
-        if (m && m[1]) {
-          e.preventDefault();
-          applyCollanaFilter(m[1]);
-          return;
-        }
-      }
-    });
+    // primo filtro
+    filterBooksDOM();
   });
 </script>
 </body>
