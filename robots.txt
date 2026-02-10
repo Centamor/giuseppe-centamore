@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://giuseppecentamore.it/sitemap.xml

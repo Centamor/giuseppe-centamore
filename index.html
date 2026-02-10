@@ -1,192 +1,57 @@
-
 <!doctype html>
 <html lang="it">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Giuseppe Centamore | Libri e manuali</title>
-  <meta name="description" content="Manuali per concorsi pubblici, saggi sul senso della vita, spiritualità, memoria e verità. Strumenti che funzionano e parole che restano." />
+  <title>Giuseppe Centamore | Manuali concorsi, saggi e libri</title>
+  <meta name="description" content="Manuali per concorsi pubblici: metodo, teoria operativa, quiz, simulazioni. Saggi e libri: fede, senso, società. Acquista su Amazon." />
+  <link rel="canonical" href="https://giuseppecentamore.it/" />
 
-  <!-- Open Graph (anteprima su WhatsApp/Facebook) -->
+  <!-- Social preview -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Giuseppe Centamore | Libri e manuali" />
-<meta property="og:description" content="Manuali per concorsi pubblici, saggi, spiritualità e collane. Parole vere, strumenti che funzionano." />
-  <!-- Sostituisci con un'immagine 1200x630 quando ce l'hai -->
-  <meta property="og:image" content="og-cover.jpg" />
-/* Griglia libri */
-.books-grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap:14px;
-}
+  <meta property="og:site_name" content="Giuseppe Centamore" />
+  <meta property="og:title" content="Giuseppe Centamore | Manuali concorsi, saggi e libri" />
+  <meta property="og:description" content="Strumenti che funzionano. Parole che restano. Acquista su Amazon." />
+  <meta property="og:url" content="https://giuseppecentamore.it/" />
 
-/* Bottoni collane */
-.collane-links{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin:12px 0;
-}
+  <meta name="twitter:card" content="summary_large_image" />
 
-.collana-link{
-  display:inline-block;
-  padding:10px 12px;
-  border:1px solid #ddd;
-  border-radius:12px;
-  text-decoration:none;
-}
+  <link rel="stylesheet" href="_shared.css" />
+
+  <!-- Minimal favicon fallback -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop stop-color='%237dd3fc'/><stop offset='1' stop-color='%23a78bfa'/></linearGradient></defs><circle cx='50' cy='50' r='46' fill='url(%23g)'/></svg>" />
+
+  <!-- Structured data: Person + WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"Giuseppe Centamore",
+    "url":"https://giuseppecentamore.it/",
+    "publisher":{
+      "@type":"Person",
+      "name":"Giuseppe Centamore"
+    }
+  }
+  </script>
+
   <style>
-    :root{
-      --bg:#0b0f14;
-      --card:#121a24;
-      --text:#e8eef7;
-      --muted:#a8b4c3;
-      --line:rgba(232,238,247,.10);
-      --accent:#7dd3fc;
-      --accent2:#a78bfa;
-      --shadow: 0 10px 35px rgba(0,0,0,.35);
-      --radius: 18px;
-      --max: 1120px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 15% 10%, rgba(125,211,252,.18), transparent 55%),
-                  radial-gradient(900px 520px at 85% 20%, rgba(167,139,250,.16), transparent 60%),
-                  var(--bg);
-      color:var(--text);
-      line-height:1.5;
-    }
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:22px}
-
-    header{
-      position:sticky; top:0; z-index:10;
-      backdrop-filter:saturate(140%) blur(10px);
-      background:rgba(11,15,20,.70);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      display:flex; gap:16px; align-items:center; justify-content:space-between;
-      max-width:var(--max); margin:0 auto; padding:14px 22px;
-    }
-    .brand{display:flex; gap:12px; align-items:center; text-decoration:none}
-    .dot{
-      width:34px; height:34px; border-radius:50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 6px rgba(125,211,252,.08);
-    }
-    .brand b{font-size:15px; letter-spacing:.2px}
-    .brand small{display:block; color:var(--muted); font-size:12px; margin-top:1px}
-
-    .menu{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
-    .chip{
-      font-size:13px; color:var(--muted);
-      padding:8px 10px; border:1px solid var(--line);
-      border-radius:999px; text-decoration:none;
-      transition:transform .08s ease, border-color .12s ease, color .12s ease;
-    }
-    .chip:hover{transform:translateY(-1px); border-color:rgba(125,211,252,.35); color:var(--text)}
-
+    /* piccoli aggiustamenti per la home */
     .hero{padding:34px 0 10px}
-    .grid-hero{display:grid; grid-template-columns: 1.25fr .75fr; gap:18px; align-items:stretch}
-    @media (max-width: 920px){.grid-hero{grid-template-columns:1fr}}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
-.card{display:block;padding:14px;border:1px solid rgba(255,255,255,.12);border-radius:14px;text-decoration:none}
-.card:hover{transform:translateY(-1px)}
-.card h3{margin:0 0 6px}
-.card p{margin:0;opacity:.85}
-    .card{
-      background:linear-gradient(180deg, rgba(18,26,36,.92), rgba(18,26,36,.78));
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-    .card-pad{padding:18px}
-
-    h1{margin:0 0 6px; font-size:34px; letter-spacing:-.4px}
-    .subtitle{color:var(--muted); margin:0 0 14px}
-
-    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 12px; border-radius:12px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      text-decoration:none; font-weight:600; font-size:14px;
-      transition:transform .08s ease, border-color .12s ease;
-    }
-    .btn:hover{transform:translateY(-1px); border-color:rgba(125,211,252,.35)}
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(125,211,252,.22), rgba(167,139,250,.22));
-      border-color: rgba(125,211,252,.30);
-    }
-
-    .mini{
-      display:grid; grid-template-columns: 1fr 1fr; gap:12px;
-    }
-    @media (max-width: 520px){.mini{grid-template-columns:1fr}}
-
-    .stat{padding:14px; border-radius:14px; border:1px solid var(--line); background: rgba(255,255,255,.02)}
-    .stat b{display:block; font-size:13px}
-    .stat span{display:block; color:var(--muted); font-size:12px; margin-top:4px}
-
-    section{padding:22px 0}
-    .section-title{display:flex; align-items:flex-end; justify-content:space-between; gap:10px; margin-bottom:10px}
-    .section-title h2{margin:0; font-size:20px}
-    .section-title p{margin:0; color:var(--muted); font-size:13px}
-
-    .toolbar{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;
-      padding:12px; border:1px solid var(--line); border-radius:14px;
-      background: rgba(255,255,255,.02);
-      margin:12px 0 14px;
-    }
-    .toolbar input, .toolbar select{
-      appearance:none;
-      background: rgba(0,0,0,.25);
-      border:1px solid var(--line);
-      color:var(--text);
-      padding:10px 10px;
-      border-radius:12px;
-      font-size:14px;
-      outline:none;
-      min-width: 220px;
-    }
-    .toolbar label{color:var(--muted); font-size:12px}
-
-    .books{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
-    @media (max-width: 980px){.books{grid-template-columns:repeat(2, 1fr)}}
-    @media (max-width: 640px){.books{grid-template-columns:1fr}}
-
-    .book{display:grid; grid-template-columns: 86px 1fr; gap:12px; padding:14px}
-    .cover{
-      width:86px; height:122px; border-radius:12px;
-      border:1px solid var(--line);
-      background: linear-gradient(135deg, rgba(125,211,252,.12), rgba(167,139,250,.12));
-      display:flex; align-items:center; justify-content:center;
-      color:var(--muted); font-size:11px; text-align:center; padding:8px;
-    }
-    .book h3{margin:0; font-size:15px}
-    .meta{color:var(--muted); font-size:12px; margin-top:3px}
-    .desc{color:var(--text); font-size:13px; margin:8px 0 0}
-    .links{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
-    .tag{
-      display:inline-flex; align-items:center; gap:6px;
-      font-size:11px; color:var(--muted);
-      padding:6px 8px; border:1px solid var(--line);
-      border-radius:999px; background: rgba(255,255,255,.02);
-    }
-
-    footer{padding:26px 0 36px; color:var(--muted); border-top:1px solid var(--line); margin-top:22px}
-    .foot{display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:space-between}
-    .small{font-size:12px}
-
-    /* Accessibilità */
-    .sr-only{position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden}
+    .grid-hero{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;align-items:stretch}
+    @media(max-width:920px){.grid-hero{grid-template-columns:1fr}}
+    .mini{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media(max-width:520px){.mini{grid-template-columns:1fr}}
+    .stat{padding:14px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.02)}
+    .stat b{display:block;font-size:13px}
+    .stat span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:8px 10px;color:var(--muted);font-size:12px;background:rgba(255,255,255,.02)}
+    .section-note{color:var(--muted);font-size:13px;margin:0}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media(max-width:900px){.split{grid-template-columns:1fr}}
+    .kicker{color:var(--muted);font-size:13px;margin:0 0 8px}
+    .book .cover{font-weight:700}
   </style>
 </head>
 <body>
@@ -197,18 +62,18 @@
       <span class="dot" aria-hidden="true"></span>
       <div>
         <b>Giuseppe Centamore</b>
-        <small>Ex professore di Scienze Umane</small>
+        <small>Autore | Manuali per concorsi, saggi e libri</small>
       </div>
     </a>
 
-   <nav class="menu" aria-label="Menu">
-  <a class="chip" href="#manuali">Manuali concorsi</a>
-  <a class="chip" href="#saggi">Saggi / Spiritualità</a>
-  <a class="chip" href="#novita">Novità</a>
-  <a class="chip" href="chi-sono.html">Chi sono</a>
-  <a class="chip" href="#contatti">Contatti</a>
-</nav>
-      </div>
+    <nav class="menu" aria-label="Menu">
+      <a class="chip" href="#manuali">Manuali concorsi</a>
+      <a class="chip" href="#libri">Libri e saggi</a>
+      <a class="chip" href="#come-funziona">Come lavoro</a>
+      <a class="chip" href="chi-sono.html">Chi sono</a>
+      <a class="chip" href="#contatti">Contatti</a>
+    </nav>
+  </div>
 </header>
 
 <main id="top" class="wrap">
@@ -217,18 +82,17 @@
     <div class="grid-hero">
       <div class="card">
         <div class="card-pad">
+          <p class="kicker">Metodo → teoria operativa → pratica → simulazioni → orale</p>
           <h1>Libri che non ti intrattengono.<br>Ti portano da qualche parte.</h1>
-          <p class="subtitle">
-  Manuali per concorsi pubblici, saggi sul senso della vita, spiritualità, memoria e verità.
-  Scritti per chi non accetta di essere ridotto a un numero.
-</p>
+          <p class="subtitle">Se studi per un concorso: vuoi un metodo che ti faccia avanzare ogni giorno. Se cerchi senso: vuoi parole vere, senza fumo.</p>
 
           <div class="actions">
-            <!-- Sostituisci # con il tuo link Amazon Autore quando ce l'hai -->
-            <a class="btn primary" href="#libri">Vai ai libri</a>
-            <a class="btn" href="#contatti">Contattami</a>
-            <a class="btn" href="#collane">Guarda le collane</a>
+            <a class="btn primary" href="https://www.amazon.it/stores/author/B0DY9VDKCD" target="_blank" rel="noopener">Acquista su Amazon (pagina autore)</a>
+            <a class="btn" href="#manuali">Vedi i manuali</a>
+            <a class="btn" href="#libri">Vedi i libri</a>
           </div>
+
+          <p class="notice">Nota: gli acquisti vengono completati su Amazon. Qui trovi selezione, metodo e collegamenti diretti.</p>
         </div>
       </div>
 
@@ -236,344 +100,240 @@
         <div class="card-pad">
           <div class="mini">
             <div class="stat">
-              <b>Novità</b>
-              <span>Aggiorno questa pagina ogni volta che esce un libro nuovo.</span>
+              <b>Manuali “autosufficienti”</b>
+              <span>Teoria essenziale + esercizi + simulazioni commentate.</span>
             </div>
             <div class="stat">
-              <b>Metodo</b>
-              <span>Testi chiari, concreti, orientati a capire e decidere.</span>
+              <b>Studio guidato</b>
+              <span>Dal concetto alla risposta: senza perdere tempo.</span>
             </div>
             <div class="stat">
-              <b>Collane</b>
-              <span>Organizzo i titoli per temi: saggi, fede e spirito, concorsi, narrativa.</span>
+              <b>Saggi e narrativa</b>
+              <span>Fede, coscienza, società, profondità umana.</span>
             </div>
             <div class="stat">
-              <b>Contatto</b>
-              <span>Per segnalazioni, proposte, richieste: scrivimi via email.</span>
+              <b>Chiarezza prima di tutto</b>
+              <span>Scrivo per chi vuole capire e ricordare.</span>
             </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <span class="pill">📌 Suggerimento: salva questa pagina tra i preferiti</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="concorsi">
-  <div class="section-title">
-    <h2>Concorsi pubblici</h2>
-    <p>Manuali progettati come i concorsi veri: punteggi, tagli, prove, commissioni</p>
-  </div>
-
-  <div class="card">
-    <div class="card-pad">
-      <p style="margin-top:0">
-        Il 90% dei candidati viene eliminato non perché è ignorante, ma perché studia nel modo sbagliato.
-        I Manuali Centamore sono costruiti con un metodo unico:
-        <b>Strategia → Teoria → Pratica → Simulazioni → Orale</b>.
-      </p>
-<p style="font-style:italic;font-size:17px;color:rgba(255,255,255,0.88);margin-left:auto;margin-right:auto;">
-  Scrivo per chi vuole fare sul serio.<br>
-  Studiare bene significa entrare nel nocciolo dell’argomento, fino a renderlo chiaro a se stessi e comunicabile agli altri.
-</p>
-      <div class="actions">
-        <a class="btn primary" href="#libri">Vedi i manuali</a>
-        <a class="btn" href="#contatti">Dimmi il tuo concorso</a>
-      </div>
-
-      <p style="margin:14px 0 0; color:var(--muted); font-size:13px">
-        INPS · Banca d’Italia · Regione Siciliana · Carabinieri · Marina · Vigili del Fuoco
-      </p>
-      <div class="books" style="margin-top:14px">
-  <div class="card">
-    <div class="card-pad">
-      <h3 style="margin:0 0 6px">INPS – Assistenti (Informatica / Amministrativi)</h3>
-      <div class="meta">Preselezione / Scritta / Orale — preparazione strategica e operativa</div>
-      <p class="desc">Schema chiaro, teoria essenziale, esercitazioni e simulazioni costruite come le prove reali.</p>
-      <div class="actions">
-        <a class="btn primary" href="inps.html">Vai ai manuali INPS</a>
-        <a class="btn" href="#contatti">Chiedi info</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-pad">
-      <h3 style="margin:0 0 6px">Banca d’Italia – Vice Assistente</h3>
-      <div class="meta">Scritta + Orale — metodo, teoria, quiz e simulazioni</div>
-      <p class="desc">Preparazione mirata alle materie reali: diritto, economia, matematica, informatica e inglese.</p>
-      <div class="actions">
-        <a class="btn primary" href="#libri">Vai ai manuali Banca d’Italia</a>
-        <a class="btn" href="#contatti">Chiedi info</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-pad">
-      <h3 style="margin:0 0 6px">Regione Siciliana – ECOFI / COGE</h3>
-      <div class="meta">Prove scritte e orali — quadro normativo + pratica</div>
-      <p class="desc">Manuali completi e autosufficienti, con mappe e verifiche per consolidare.</p>
-      <div class="actions">
-        <a class="btn primary" href="#libri">Vai ai manuali Regione Siciliana</a>
-        <a class="btn" href="#contatti">Chiedi info</a>
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
-</section>
-  <section id="novita">
+  <section id="manuali">
     <div class="section-title">
-      <h2>Novità</h2>
-      <p>Ultime uscite e prossime pubblicazioni</p>
+      <h2>Manuali concorsi</h2>
+      <p>Selezione pronta all’acquisto</p>
     </div>
 
-  <div class="card">
-  <div class="card-pad">
-    <p><strong>Gennaio 2026</strong> – Avviata la collana <em>Manuali INPS – Assistenti</em>.</p>
-    <p><a href="inps.html">Vai alla pagina INPS</a></p>
-  </div>
-</div>
+    <div class="toolbar" role="region" aria-label="Filtri manuali">
+      <div>
+        <label for="q1">Cerca</label><br />
+        <input id="q1" type="search" placeholder="Es. INPS, Agenzia Entrate, RIPAM…" />
+      </div>
+      <div>
+        <label for="tag1">Categoria</label><br />
+        <select id="tag1">
+          <option value="">Tutte</option>
+          <option value="inps">INPS / INAIL</option>
+          <option value="agenzia-entrate">Agenzia delle Entrate</option>
+          <option value="banca-italia">Banca d’Italia</option>
+          <option value="scuola">Scuola</option>
+          <option value="ripam">RIPAM / Cultura</option>
+        </select>
+      </div>
+      <div>
+        <label for="sort1">Ordina</label><br />
+        <select id="sort1">
+          <option value="new">Più recenti</option>
+          <option value="az">Titolo A‑Z</option>
+        </select>
+      </div>
+    </div>
 
-<div class="card">
-  <div class="card-pad">
-    <p><strong>Gennaio 2026</strong> – Pubblicata la piattaforma <em>Giuseppe Centamore</em> per manuali e saggi.</p>
-    <p><a href="#manuali">Esplora i manuali</a></p>
-  </div>
-</div>
+    <div id="manualiBox" class="books" aria-live="polite"></div>
 
-<div class="card">
-  <div class="card-pad">
-    <p><strong>In preparazione</strong> – Nuovi volumi per Carabinieri e Banca d’Italia.</p>
-  </div>
-</div>
+    <p class="section-note">Non trovi il manuale che cerchi? Vai alla pagina autore e usa la ricerca di Amazon.</p>
   </section>
 
   <section id="libri">
     <div class="section-title">
-      <h2>Libri</h2>
-      <p>Filtra per collana e cerca per titolo</p>
+      <h2>Libri e saggi</h2>
+      <p>Fede, coscienza, società, profondità</p>
     </div>
 
     <div class="toolbar" role="region" aria-label="Filtri libri">
       <div>
-        <div class="collane-grid" aria-label="Collane">
-<a class="collana-card" href="#libri" onclick="setCollana('per-migliorare-il-mondo'); return false;">
-  <img src="img/collane/per-migliorare-il-mondo.jpg" alt="Collana Per migliorare il mondo">
-  <h3>Per migliorare il mondo</h3>
-</a>
-
-<a class="collana-card" href="#libri" onclick="setCollana('fede-e-spirito'); return false;">
-  <img src="img/collane/fede-e-spirito.jpg" alt="Collana Fede e Spirito">
-  <h3>Fede e Spirito</h3>
-</a>
-
-<a class="collana-card" href="#libri" onclick="setCollana('autore-potenziato'); return false;">
-  <img src="img/collane/autore-potenziato.jpg" alt="Collana L’autore potenziato">
-  <h3>L’autore potenziato</h3>
-</a>
-
-<a class="collana-card" href="#libri" onclick="setCollana('manuali-centamore'); return false;">
-  <img src="img/collane/manuali-centamore.jpg" alt="Manuali Centamore per la preparazione ai concorsi pubblici">
-  <h3>Manuali Centamore per i concorsi</h3>
-</a>
-
-<a class="collana-card" href="#libri" onclick="setCollana('scienze-umane'); return false;">
-  <img src="img/collane/scienze-umane.jpg" alt="Scienze umane e sociali">
-  <h3>Scienze umane e sociali</h3>
-</a>
-
-<a class="collana-card" href="#libri" onclick="setCollana('volare-verso-il-creatore'); return false;">
-  <img src="img/collane/volare-verso-il-creatore.jpg" alt="Volare verso il Creatore">
-  <h3>Volare verso il Creatore</h3>
-</a>
-
-<a class="collana-card" href="#libri" onclick="setCollana('autostrada-del-paradiso'); return false;">
-  <img src="img/collane/autostrada-del-paradiso.jpg" alt="Autostrada del Paradiso">
-  <h3>Autostrada del Paradiso</h3>
-</a>
-        <label for="q">Cerca</label><br />
-        <input id="q" type="search" placeholder="Scrivi un titolo o una parola chiave" />
+        <label for="q2">Cerca</label><br />
+        <input id="q2" type="search" placeholder="Es. fede, psicologia, romanzo…" />
       </div>
       <div>
-        <label for="collana">Collana</label><br />
-        <select id="collana">
-          <option value="">Tutte</option>
-          <option value="per-migliorare-il-mondo">Per migliorare il mondo</option>
-          <option value="fede-e-spirito">Fede e Spirito</option>
-          <option value="autore-potenziato">L’autore potenziato</option>
-          <option value="manuali-centamore">Manuali Centamore per la preparazione ai concorsi pubblici</option>
-          <option value="scienze-umane">Scienze umane e sociali</option>
-          <option value="volare-verso-il-creatore">Volare verso il Creatore</option>
-          <option value="autostrada-del-paradiso">Autostrada del Paradiso</option>
+        <label for="tag2">Tema</label><br />
+        <select id="tag2">
+          <option value="">Tutti</option>
+          <option value="fede">Fede / Spiritualità</option>
+          <option value="psicologia">Psicologia / Scienze umane</option>
+          <option value="romanzo">Narrativa</option>
+          <option value="societa">Società</option>
         </select>
       </div>
       <div>
-        <label for="sort">Ordina</label><br />
-        <select id="sort">
+        <label for="sort2">Ordina</label><br />
+        <select id="sort2">
           <option value="new">Più recenti</option>
-          <option value="az">Titolo A-Z</option>
+          <option value="az">Titolo A‑Z</option>
         </select>
       </div>
     </div>
 
-    <div id="books" class="books"></div>
+    <div id="libriBox" class="books" aria-live="polite"></div>
+  </section>
 
-    <div class="card" style="margin-top:14px">
-      <div class="card-pad" style="color:var(--muted); font-size:13px">
-        Suggerimento pratico: per ogni libro ti basterà inserire titolo, descrizione, collana e link Amazon nella lista in fondo (array “BOOKS”). La pagina si aggiorna da sola.
+  <section id="come-funziona">
+    <div class="section-title">
+      <h2>Come lavoro</h2>
+      <p>Per farti studiare davvero</p>
+    </div>
+
+    <div class="split">
+      <div class="card">
+        <div class="card-pad">
+          <h3 style="margin:0 0 8px">Per i concorsi</h3>
+          <p class="subtitle" style="margin:0">Un manuale deve essere una bussola, non una biblioteca.</p>
+          <ul style="margin:10px 0 0; color:var(--text)">
+            <li><span style="color:var(--muted)">Teoria operativa</span>: solo ciò che serve per rispondere.</li>
+            <li><span style="color:var(--muted)">Esercizi mirati</span>: per ogni tipologia, con metodo.</li>
+            <li><span style="color:var(--muted)">Simulazioni</span>: per allenare tempo e pressione.</li>
+            <li><span style="color:var(--muted)">Orale</span>: idee chiare e linguaggio pulito.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-pad">
+          <h3 style="margin:0 0 8px">Per i saggi e la spiritualità</h3>
+          <p class="subtitle" style="margin:0">Parole che aiutano a respirare, scegliere, rialzarsi.</p>
+          <ul style="margin:10px 0 0; color:var(--text)">
+            <li><span style="color:var(--muted)">Semplicità</span>: niente effetti speciali.</li>
+            <li><span style="color:var(--muted)">Profondità</span>: senza oscurità.</li>
+            <li><span style="color:var(--muted)">Concretezza</span>: vita quotidiana, non teoria astratta.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="collane">
+  <section id="contatti">
     <div class="section-title">
-      <h2>Collane</h2>
-      <p>Progetti editoriali in crescita</p>
+      <h2>Contatti</h2>
+      <p>Per lettori, proposte editoriali, collaborazioni</p>
     </div>
-<div class="collane-links">
-  <a class="collana-link" href="#libri" data-collana="per-migliorare-il-mondo">Per migliorare il mondo</a>
-  <a class="collana-link" href="#libri" data-collana="fede-e-spirito">Fede e Spirito</a>
-  <a class="collana-link" href="#libri" data-collana="autore-potenziato">L’autore potenziato</a>
-  <a class="collana-link" href="#libri" data-collana="manuali-centamore">Manuali Centamore per la preparazione ai concorsi pubblici</a>
-  <a class="collana-link" href="#libri" data-collana="scienze-umane">Scienze umane e sociali</a>
-  <a class="collana-link" href="#libri" data-collana="volare-verso-il-creatore">Volare verso il Creatore</a>
-  <a class="collana-link" href="#libri" data-collana="autostrada-del-paradiso">Autostrada del Paradiso</a>
-</div>
- <div class="books">
-  <div class="card book-card" data-collana="per-migliorare-il-mondo">
-    <div class="card-pad">
-      <h3 style="margin:0 0 6px">Per migliorare il mondo</h3>
-      <div class="meta">Civica, società, responsabilità, idee pratiche</div>
-      <p class="desc">Saggi e interventi per leggere la realtà e proporre cambiamenti concreti.</p>
-    </div>
-  </div>
 
-  <div class="card book-card" data-collana="fede-e-spirito">
-    <div class="card-pad">
-      <h3 style="margin:0 0 6px">Fede e Spirito</h3>
-      <div class="meta">Spiritualità, meditazione, ricerca di senso</div>
-      <p class="desc">Percorsi di fede e di luce, con parole semplici e profonde.</p>
+    <div class="card">
+      <div class="card-pad">
+        <p style="margin:0 0 10px">Scrivimi:</p>
+        <div class="actions" style="margin-top:0">
+          <a class="btn primary" href="mailto:giucentamore@gmail.com?subject=Contatto%20dal%20sito%20giuseppecentamore.it">Invia email</a>
+          <a class="btn" href="https://www.amazon.it/stores/author/B0DY9VDKCD" target="_blank" rel="noopener">Amazon Autore</a>
+        </div>
+        <p class="notice">Se mi scrivi dal sito: indica sempre l’oggetto (es. “Manuale INPS”, “Saggio”, “Collana”).</p>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="card book-card" data-collana="autore-potenziato">
-    <div class="card-pad">
-      <h3 style="margin:0 0 6px">L’autore potenziato</h3>
-      <div class="meta">Scrittura nell’era delle macchine, editoria, piattaforme</div>
-      <p class="desc">Saggi pratici e riflessivi su creatività, metodo, strumenti e nuove sfide.</p>
-    </div>
-  </div>
-
-  <div class="card book-card" data-collana="manuali-centamore">
-    <div class="card-pad">
-      <h3 style="margin:0 0 6px">Manuali Centamore per la preparazione ai concorsi pubblici</h3>
-      <div class="meta">Metodo, teoria essenziale, esercitazioni, simulazioni</div>
-      <p class="desc">Manuali completi e autosufficienti per arrivare pronti alle prove.</p>
-    </div>
-  </div>
-
-  <div class="card book-card" data-collana="scienze-umane">
-    <div class="card-pad">
-      <h3 style="margin:0 0 6px">Scienze umane e sociali</h3>
-      <div class="meta">Pedagogia, psicologia, sociologia, educazione</div>
-      <p class="desc">Testi per capire l’umano e la società, con rigore e chiarezza.</p>
-    </div>
-  </div>
-
-  <div class="card book-card" data-collana="volare-verso-il-creatore">
-    <div class="card-pad">
-      <h3 style="margin:0 0 6px">Volare verso il Creatore</h3>
-      <div class="meta">Spiritualità, ascesi, speranza</div>
-      <p class="desc">Una collana per camminare verso Dio, un passo alla volta.</p>
-    </div>
-  </div>
-
-  <div class="card book-card" data-collana="autostrada-del-paradiso">
-    <div class="card-pad">
-      <h3 style="margin:0 0 6px">Autostrada del Paradiso</h3>
-      <div class="meta">Cammino cristiano, vita quotidiana, meta eterna</div>
-      <p class="desc">Una guida spirituale in movimento: cadute, ripartenze, e direzione.</p>
-    </div>
-  </div>
-</div>
-</section>
 </main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="small">© <span id="y"></span> Giuseppe Centamore</div>
+    <div class="small">
+      <a class="tag" href="chi-sono.html">Chi sono</a>
+      <a class="tag" href="https://www.amazon.it/stores/author/B0DY9VDKCD" target="_blank" rel="noopener">Amazon</a>
+      <a class="tag" href="#top">Torna su</a>
+    </div>
+  </div>
+</footer>
+
 <script>
-  function filterBooksDOM() {
-    const collana = (document.getElementById('collana')?.value || '').trim();
-    const q = (document.getElementById('q')?.value || '').trim().toLowerCase();
+  // --- Catalogo (modifica qui per aggiungere libri) ---
+  // campi: title, type ('manuale'|'libro'), tags (array), year (numero), url (Amazon), note (stringa breve)
+  const CATALOG = [
+    // Manuali concorsi
+    { title: 'Manuale completo per Funzionari Tecnici Agenzia delle Entrate', type:'manuale', tags:['agenzia-entrate'], year:2024, url:'https://www.amazon.it/completo-Funzionari-Centamore-preparazione-concorsi-ebook/dp/B0G1KNN2D2', note:'Metodo + materie + prove' },
+    { title: 'RIPAM Cultura – Il manuale decisivo', type:'manuale', tags:['ripam'], year:2024, url:'https://www.amazon.it/RIPAM-Cultura-simulazioni-Bibliotecario-preparazione-ebook/dp/B0GBZ2GP55', note:'Quiz + simulazioni' },
+    { title: 'Vice Assistente in Banca d’Italia – Manuale operativo', type:'manuale', tags:['banca-italia'], year:2024, url:'https://www.amazon.it/Vice-Assistente-Banca-dItalia-preparazione-ebook/dp/B0GDHXDTCZ', note:'Operativo e pratico' },
+    { title: '448 Funzionari Ispettori di Vigilanza INPS/INAIL', type:'manuale', tags:['inps'], year:2024, url:'https://www.amazon.it/Funzionari-Ispettori-Vigilanza-preparazione-Centamore-ebook/dp/B0G3Y9WWJT', note:'Materie + metodo' },
+    { title: 'Concorso Scuola Secondaria – Parte generale comune', type:'manuale', tags:['scuola'], year:2024, url:'https://www.amazon.it/Concorso-Secondaria-generale-Centamore-preparazione-ebook/dp/B0G2CTM4JY', note:'Base comune + studio' },
 
-    document.querySelectorAll('.book-card').forEach(card => {
-      const c = (card.dataset.collana || '').trim();
-      const text = (card.innerText || '').toLowerCase();
+    // Libri e saggi
+    { title: 'Psicologia generale: Teorie, Metodi e Scoperte', type:'libro', tags:['psicologia'], year:2025, url:'https://www.amazon.it/Psicologia-generale-Teorie-Metodi-Scoperte/dp/B0DVCJ1FTK', note:'Scienze umane' },
+    { title: 'Il prezzo dell\'innocenza', type:'libro', tags:['romanzo','fede'], year:2025, url:'https://www.amazon.it/prezzo-dellinnocenza-Giuseppe-Centamore-ebook/dp/B0DV41Q2NQ', note:'Narrativa e coscienza' },
+    { title: 'Con la Ragione oltre la Ragione', type:'libro', tags:['fede'], year:2025, url:'https://www.amazon.it/Ragione-oltre-Giuseppe-Centamore-ebook/dp/B0DZ7X5K4Z', note:'Saggio di senso' },
+    { title: 'Si cresce anche all\'interno', type:'libro', tags:['romanzo'], year:2025, url:'https://www.amazon.it/cresce-anche-allinterno-Giuseppe-Centamore-ebook/dp/B0DWBL17WS', note:'Romanzo' },
+    { title: 'Un padre (Romanzi dell\'anima)', type:'libro', tags:['romanzo'], year:2024, url:'https://www.amazon.it/padre-ROMANZI-DELLANIMA-Storie-coscienza-ebook/dp/B0GCTHM7LL', note:'Amore e verità' },
+    { title: 'Angela e Pippo: La storia del nostro amore', type:'libro', tags:['romanzo'], year:2025, url:'https://www.amazon.it/Angela-Pippo-storia-nostro-amore/dp/B0DWFGQ4DD', note:'Storia' },
+    { title: 'L\'inferno è dentro di noi. Ma anche la luce', type:'libro', tags:['romanzo'], year:2025, url:'https://www.amazon.it/Si-cresce-anche-allinferno-Linferno/dp/B0DY4MXR8W', note:'Luce e ombra' }
+  ];
 
-      const okCollana = !collana || c === collana;
-      const okQuery = !q || text.includes(q);
+  function esc(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');}
 
-      card.style.display = (okCollana && okQuery) ? '' : 'none';
-    });
+  function makeCard(item){
+    const label = item.type === 'manuale' ? 'Manuale' : 'Libro';
+    const tags = (item.tags||[]).map(t=>`<span class="tag">${esc(t.replaceAll('-',' '))}</span>`).join('');
+    const coverText = (item.type === 'manuale') ? 'CONCORSI' : 'LIBRO';
+    return `
+      <article class="card book" data-tags="${esc((item.tags||[]).join(','))}" data-title="${esc(item.title.toLowerCase())}" data-year="${item.year||0}">
+        <div class="cover" aria-hidden="true">${esc(coverText)}</div>
+        <div>
+          <h3>${esc(item.title)}</h3>
+          <div class="meta">${esc(label)} • ${item.year ? esc(item.year) : ''}</div>
+          <p class="desc">${esc(item.note || '')}</p>
+          <div class="links">
+            <a class="btn primary" href="${esc(item.url)}" target="_blank" rel="noopener">Acquista su Amazon</a>
+            ${tags}
+          </div>
+        </div>
+      </article>
+    `;
   }
 
-  function applyCollanaFilter(value) {
-    location.hash = 'libri';
+  function render(boxId, qId, tagId, sortId, type){
+    const q = (document.getElementById(qId).value || '').trim().toLowerCase();
+    const tag = (document.getElementById(tagId).value || '').trim();
+    const sort = (document.getElementById(sortId).value || 'new');
 
-    const select = document.getElementById('collana');
-    const q = document.getElementById('q');
+    let items = CATALOG.filter(x=>x.type===type);
 
-    // reset ricerca
-    if (q) {
-      q.value = '';
-      q.dispatchEvent(new Event('input', { bubbles: true }));
-      q.dispatchEvent(new Event('change', { bubbles: true }));
+    if (tag){ items = items.filter(x => (x.tags||[]).includes(tag)); }
+    if (q){ items = items.filter(x => (x.title||'').toLowerCase().includes(q) || (x.note||'').toLowerCase().includes(q)); }
+
+    if (sort==='az'){
+      items.sort((a,b)=> (a.title||'').localeCompare(b.title||'', 'it'));
+    } else {
+      items.sort((a,b)=> (b.year||0) - (a.year||0));
     }
 
-    // imposta collana
-    if (select) {
-      select.value = value || '';
-      select.dispatchEvent(new Event('change', { bubbles: true }));
-      select.dispatchEvent(new Event('input', { bubbles: true }));
-    }
-
-    // ✅ aggiorna visualizzazione libri
-    filterBooksDOM();
+    const box = document.getElementById(boxId);
+    box.innerHTML = items.map(makeCard).join('');
   }
 
-  // ✅ globale subito
-  window.setCollana = function(value) {
-    applyCollanaFilter(value);
-    return false;
-  };
+  function hook(boxId, qId, tagId, sortId, type){
+    const rer = () => render(boxId, qId, tagId, sortId, type);
+    document.getElementById(qId).addEventListener('input', rer);
+    document.getElementById(tagId).addEventListener('change', rer);
+    document.getElementById(sortId).addEventListener('change', rer);
+    rer();
+  }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('collana')?.addEventListener('change', filterBooksDOM);
-    document.getElementById('q')?.addEventListener('input', filterBooksDOM);
-
-    // primo filtro
-    filterBooksDOM();
-  });
+  document.getElementById('y').textContent = new Date().getFullYear();
+  hook('manualiBox', 'q1', 'tag1', 'sort1', 'manuale');
+  hook('libriBox', 'q2', 'tag2', 'sort2', 'libro');
 </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
